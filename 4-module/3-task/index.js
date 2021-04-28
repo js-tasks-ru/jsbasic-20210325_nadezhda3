@@ -2,6 +2,7 @@
 
 
 
+
 function highlight(table) {
   // ваш код...
   let rows = table.tBodies[0].rows;
