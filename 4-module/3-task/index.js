@@ -1,41 +1,32 @@
-const FIRST_COLUMN = 1;
-const SECOND_COLUMN = 2;
-const THIRD_COLUMN = 3;
+
+
+
+
 
 function highlight(table) {
-  const actions = {
-    [THIRD_COLUMN]: (root, td) => {
-      if (td.dataset.available === 'true') {
-        root.classList.toggle('available', true);
-      } else if (td.dataset.available === 'false') {
-        root.classList.toggle('unavailable', true);
-      } else if (!td.hasAttribute('data-available')) {
-        root.hidden = true;
-      }
-    },
-    [SECOND_COLUMN]: (root, td) => {
-      if (td.textContent === 'm') {
-        root.classList.toggle('male', true);
-      } else if (td.textContent === 'f') {
-        root.classList.toggle('female', true);
-      }
-    },
-    [FIRST_COLUMN]: (root, td) => {
-      const age = parseInt(td.textContent, 10);
+  // ваш код...
+  let rows = table.tBodies[0].rows;
+  //console.log (rows);
+  for (let tr of rows) {
 
-      if (age < 18) {
-        root.style.textDecoration = 'line-through';
-      }
-    },
-  };
+    if (tr.cells[2].innerHTML === 'm') {
+      tr.classList.add('male');
+    } else {
+      tr.classList.add('female');
+    }
 
-  for (const tr of table.rows) {
-    Array.from(tr.cells).forEach((td, index) => {
-      const fn = actions[index];
+    if (tr.cells[1].innerHTML < '18') {
+      tr.style.textDecoration = 'line-through'
+    }
 
-      if (typeof fn === 'function') {
-        fn(tr, td);
-      }
-    });
+    if (!tr.cells[3].hasAttribute('data-available')) {
+      tr.setAttribute('hidden', 'true');
+    }
+    if (tr.cells[3].dataset.available === 'true') {
+      tr.classList.add('available');
+    }
+    if (tr.cells[3].dataset.available === 'false') {
+      tr.classList.add('unavailable');
+    }
   }
 }
