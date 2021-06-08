@@ -23,8 +23,9 @@ carousel.onclick = function(event) {
 };
 
 let currentSlide = 1;
+button_left.style.display = 'none'; 
 
-function moveRigth(target){
+function moveRigth(){
   button_left.style.display = '';  
   if (currentSlide < 4){    
   carousel__inner.style.transform = `translateX(-${widthOfCarousel * currentSlide}px)`;   
@@ -36,26 +37,27 @@ function moveRigth(target){
 };
 
 
-function moveLeft(target){
+function moveLeft(){
   button_right.style.display = '';  
   
   if (currentSlide == 1){
     return;
   }
   if (currentSlide == 2){
-    carousel__inner.style.transform = `translateX(0px)`;
+    carousel__inner.style.transform = `translateX(-${widthOfCarousel * (currentSlide - 2)}px)`;
     currentSlide -= 1;
     button_left.style.display = 'none'; 
   }
-  if (currentSlide == 3){          
-    carousel__inner.style.transform = `translateX(-988px)`;
+  if (currentSlide == 3 || currentSlide == 4){          
+    carousel__inner.style.transform = `translateX(-${widthOfCarousel * (currentSlide - 2)}px)`; 
     currentSlide -= 1;
   }
 
-  if (currentSlide == 4){
-   carousel__inner.style.transform = `translateX(-1976px)`;
-   currentSlide -= 1;
-  };
-
 };
 }
+
+
+
+
+
+
