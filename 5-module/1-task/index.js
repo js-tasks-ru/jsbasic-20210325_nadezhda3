@@ -1,10 +1,10 @@
 function hideSelf() {
-  let button = document.getElementsByClassName('hide-self-button');
+  let button = document.querySelector('.hide-self-button');
   
-    for (let onbutton of button) {
-    onbutton.onclick = function () {
-    onbutton.setAttribute('hidden', 'true');
-    }
+    
+    button.onclick = function () {
+    button.setAttribute('hidden', 'true');
+    
     }
     // ваш код...
   }
