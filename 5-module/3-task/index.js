@@ -1,4 +1,5 @@
 function initCarousel() {
+
   // ваш код...
 
   let carousel__inner = document.querySelector('.carousel__inner');
@@ -55,6 +56,7 @@ function moveLeft(){
 
 };
 }
+
 
 
 
